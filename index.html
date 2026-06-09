@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2027两轮车CMF趋势白皮书与趋势工具发布会 - 邀请函</title>
+    <meta property="og:title" content="2027两轮车CMF趋势白皮书与趋势工具发布会邀请函">
+    <meta property="og:description" content="COLORO × PPG × 锦湖日丽联合发布 | 6月26日·上海 | 四大趋势主题 · 24个关键趋势色 · 五大趋势信号">
+    <meta property="og:image" content="https://5b05dcfa97aa4dc08380fdc1fcf3e95c.app.codebuddy.work/image1.png">
+    <meta property="og:image:width" content="750">
+    <meta property="og:image:height" content="1334">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --gold: #C9A96E;
+            --dark: #0D0D0D;
+            --text: #FFFFFF;
+            --text-secondary: rgba(255,255,255,0.65);
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: var(--dark);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        
+        .section.prev {
+            transform: translateY(-100%);
+        }
+        
+        /* 导航指示器 */
+        .nav-dots {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .nav-dot.active {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+        
+        .scroll-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: bounce 2s infinite;
+            pointer-events: none;
+        }
+        
+        .scroll-hint span {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 2px;
+        }
+        
+        .scroll-hint .arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid rgba(255,255,255,0.5);
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+            transform: rotate(45deg);
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        
+        /* ===== 第1页：封面 ===== */
+        .page-cover {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .cover-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            z-index: 1;
+            filter: brightness(0.38);
+            -webkit-filter: brightness(0.38);
+            transform: scale(1.05);
+        }
+
+        .cover-gradients {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background:
+                linear-gradient(180deg,
+                    rgba(12,8,26,0.55) 0%,
+                    rgba(12,8,26,0.20) 25%,
+                    rgba(12,8,26,0.15) 45%,
+                    rgba(12,8,26,0.30) 65%,
+                    rgba(12,8,26,0.80) 100%);
+        }
+
+        .cover-body {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px 80px;
+        }
+
+        .cover-top {
+            text-align: center;
+            flex-shrink: 0;
+            margin-top: 14vh;
+        }
+
+        .invitation-badge {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 36px 8px;
+            border: 1px solid var(--gold);
+            background: rgba(201,169,110,0.04);
+            animation: fadeInDown 0.9s ease 0.3s both;
+            margin-bottom: 16px;
+        }
+        .badge-en {
+            font-size: 20px;
+            letter-spacing: 12px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .badge-cn {
+            font-size: 12px;
+            letter-spacing: 6px;
+            color: rgba(201,169,110,0.55);
+            margin-top: 4px;
+        }
+
+        .cover-title {
+            text-align: center;
+            animation: fadeInUp 0.9s ease 0.5s both;
+            margin-top: 12px;
+        }
+
+        .title-cn {
+            display: block;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: 2px;
+            line-height: 1.35;
+        }
+
+        .title-en {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.55);
+            margin-top: 8px;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+
+        .cover-divider {
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 14px auto;
+            animation: fadeInUp 0.9s ease 0.65s both;
+        }
+
+        .cover-subtitle {
+            text-align: center;
+            animation: fadeInUp 0.9s ease 0.75s both;
+        }
+        .subtitle-cn {
+            display: block;
+            font-size: 10px;
+            color: rgba(255,255,255,0.70);
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        .subtitle-en {
+            display: block;
+            font-size: 10px;
+            color: rgba(255,255,255,0.38);
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* 车队动画区域 */
+        .convoy-stage {
+            position: relative;
+            width: 100%;
+            flex: 1;
+            min-height: 140px;
+            overflow: hidden;
+            z-index: 3;
+        }
+
+        .convoy-ground {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(201,169,110,0.15), transparent);
+        }
+
+        .scooter-unit {
+            position: absolute;
+            bottom: 12px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .scooter-unit img {
+            height: 86px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.6));
+        }
+
+        .scooter-unit.dust-trail {
+            /* 尘土在 scooter-unit 内通过 JS canvas 绘制 */
+        }
+
+        .scooter-1 { animation: driveRight 8s linear infinite backwards; animation-delay: 0s; }
+        .scooter-1 img { transform: scaleX(-1); }
+        .scooter-2 { animation: driveRight 8s linear infinite backwards; animation-delay: 1.2s; }
+        .scooter-3 { animation: driveRight 8s linear infinite backwards; animation-delay: 2.4s; }
+        .scooter-4 { animation: driveRight 8s linear infinite backwards; animation-delay: 3.6s; }
+
+        @keyframes driveRight {
+            0%   { transform: translateX(-100px); opacity: 0; }
+            3%   { opacity: 1; }
+            85%  { opacity: 1; }
+            100% { transform: translateX(calc(100vw + 50px)); opacity: 0; }
+        }
+
+        /* 尘土粒子 */
+        .dust-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .cover-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            flex-shrink: 0;
+            z-index: 4;
+        }
+
+        .cover-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            font-size: 13px;
+            animation: fadeInUp 0.7s ease 1.0s both;
+        }
+
+        .cover-meta .meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .cover-meta .meta-label {
+            font-size: 9px;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 2px;
+        }
+
+        .cover-meta .meta-value {
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .cover-meta .meta-sep {
+            width: 1px;
+            height: 28px;
+            background: rgba(201,169,110,0.25);
+        }
+
+        .brand-line {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            animation: fadeInUp 0.7s ease 1.15s both;
+            padding-bottom: 6px;
+        }
+
+        .brand-line .sep {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: rgba(201,169,110,0.40);
+        }
+
+        .brand-line span {
+            font-size: 11px;
+            color: rgba(255,255,255,0.40);
+            letter-spacing: 3px;
+        }
+        
+        /* ===== 第2页：项目背景 ===== */
+        .page-background {
+            background: #0d0d0d;
+            padding: 50px 20px 40px;
+            justify-content: flex-start;
+        }
+        
+        .page-background .bg-texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+            z-index: 1;
+        }
+        
+        .page-background .page-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 420px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        
+        .page-header h2 {
+            font-size: 22px;
+            color: var(--text);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        
+        .page-header .en {
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .page-header .line {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 14px auto 0;
+        }
+        
+        .letter-card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px 22px;
+            margin-bottom: 16px;
+        }
+        
+        .letter-card .salutation {
+            font-size: 15px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .letter-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 14px;
+            text-align: justify;
+        }
+        
+        .letter-card p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .letter-card .highlight {
+            color: var(--text);
+            font-weight: 500;
+        }
+        
+        .collab-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px;
+            background: rgba(201, 169, 110, 0.1);
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .collab-bar span {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .collab-bar strong {
+            color: var(--gold);
+        }
+        
+        .bg-scooter-preview {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        
+        .bg-scooter-preview img {
+            width: 100%;
+            display: block;
+        }
+        
+        /* ===== 第3页：发布会概览 ===== */
+        .page-overview {
+            background: #0d0d0d;
+            padding: 50px 20px 40px;
+            justify-content: flex-start;
+        }
+        
+        .page-overview .bg-texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .page-overview .page-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 420px;
+        }
+        
+        .overview-intro {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .bullet-card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 20px 20px;
+            margin-bottom: 12px;
+        }
+        
+        .bullet-card .bullet-label {
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .bullet-card p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+        
+        .bullet-card .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .bullet-card .bullet-list li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+        
+        .bullet-card .bullet-list li::before {
+            content: '•';
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+            font-size: 14px;
+        }
+        
+        .invite-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            border-left: 2px solid var(--gold);
+        }
+        .invite-highlight {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== 第4页：活动详情 ===== */
+        .page-details {
+            background: #0d0d0d;
+            padding: 0;
+            justify-content: flex-start;
+        }
+        
+        .page-details .bg-texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.12;
+            z-index: 1;
+        }
+        
+        .page-details .page-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .details-visual {
+            width: 100%;
+            height: 20%;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .details-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .details-visual::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(180deg, transparent 0%, #0d0d0d 100%);
+        }
+        
+        .details-body {
+            padding: 20px 20px 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .details-body .page-header {
+            margin-bottom: 18px;
+            margin-top: 0;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .schedule-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-bottom: 14px;
+            width: 100%;
+            max-width: 420px;
+        }
+        
+        .schedule-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        
+        .schedule-time {
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            min-width: 85px;
+            flex-shrink: 0;
+        }
+        
+        .schedule-content h4 {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 3px;
+        }
+        
+        .schedule-content p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .location-box {
+            padding: 16px 20px;
+            background: rgba(201, 169, 110, 0.1);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 420px;
+        }
+        
+        .location-box h4 {
+            font-size: 14px;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        
+        .location-box p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* ===== 第5页：扫码报名 ===== */
+        .page-register {
+            background: #0d0d0d;
+            padding: 50px 20px 40px;
+            justify-content: flex-start;
+        }
+        
+        .page-register .bg-texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .page-register .page-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .qr-card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 32px 24px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .qr-card .scan-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        
+        .qr-card .scan-title {
+            font-size: 16px;
+            color: var(--text);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .qr-code-wrapper {
+            width: 200px;
+            height: 200px;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .qr-code-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .qr-card .scan-tip {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .qr-card .scan-tip strong {
+            color: var(--gold);
+        }
+        
+        .seat-notice {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--gold);
+        }
+        
+        /* ===== 动画 ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in .invitation-badge { animation: fadeInDown 0.8s ease 0.2s both; }
+        .animate-in .cover-title { animation: fadeInUp 0.8s ease 0.4s both; }
+        .animate-in .cover-divider { animation: fadeInUp 0.8s ease 0.55s both; }
+        .animate-in .cover-subtitle { animation: fadeInUp 0.8s ease 0.65s both; }
+        .animate-in .cover-meta { animation: fadeInUp 0.7s ease 0.85s both; }
+        .animate-in .brand-line { animation: fadeInUp 0.7s ease 1.0s both; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-dots">
+            <div class="nav-dot active" data-index="0"></div>
+            <div class="nav-dot" data-index="1"></div>
+            <div class="nav-dot" data-index="2"></div>
+            <div class="nav-dot" data-index="3"></div>
+            <div class="nav-dot" data-index="4"></div>
+        </div>
+        
+        <div class="scroll-hint" id="scrollHint">
+            <span>向上滑动</span>
+            <div class="arrow"></div>
+        </div>
+        
+        <!-- ===== 第1页：封面 ===== -->
+        <div class="section page-cover active" data-index="0">
+            <img src="image1.png" alt="封面" class="cover-bg">
+            <div class="cover-gradients"></div>
+            <div class="cover-body">
+                <div class="cover-top">
+                    <div class="invitation-badge">
+                        <span class="badge-en">INVITATION</span>
+                        <span class="badge-cn">邀请函</span>
+                    </div>
+                    <h1 class="cover-title">
+                        <span class="title-cn">2027两轮车CMF趋势白皮书与趋势工具发布会</span>
+                        <span class="title-en">2027 Two-Wheeler Trends White Paper Launch Conference</span>
+                    </h1>
+                    <div class="cover-divider"></div>
+                    <div class="cover-subtitle">
+                        <span class="subtitle-cn">趋势· 情绪 · 色彩 | 面向未来出行体验的设计语言指南</span>
+                        <span class="subtitle-en">Trends · Emotion · Color — Design Language for Future Mobility</span>
+                    </div>
+                </div>
+                <div class="convoy-stage" id="convoyStage">
+                    <canvas class="dust-canvas" id="dustCanvas"></canvas>
+                    <div class="convoy-ground"></div>
+                    <!-- 四辆车队 -->
+                    <div class="scooter-unit scooter-1">
+                        <img src="scooter_1.png" alt="scooter1">
+                    </div>
+                    <div class="scooter-unit scooter-2">
+                        <img src="scooter_2.png" alt="scooter2">
+                    </div>
+                    <div class="scooter-unit scooter-3">
+                        <img src="scooter_3.png" alt="scooter3">
+                    </div>
+                    <div class="scooter-unit scooter-4">
+                        <img src="scooter_4.png" alt="scooter4">
+                    </div>
+                </div>
+                <div class="cover-bottom">
+                    <div class="cover-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">DATE / 日期</span>
+                            <span class="meta-value">2026.06.26</span>
+                        </div>
+                        <div class="meta-sep"></div>
+                        <div class="meta-item">
+                            <span class="meta-label">TIME / 时间</span>
+                            <span class="meta-value">13:30-16:00</span>
+                        </div>
+                        <div class="meta-sep"></div>
+                        <div class="meta-item">
+                            <span class="meta-label">CITY / 城市</span>
+                            <span class="meta-value">上海 / Shanghai</span>
+                        </div>
+                    </div>
+                    <div class="brand-line">
+                        <span>COLORO</span>
+                        <div class="sep"></div>
+                        <span>PPG</span>
+                        <div class="sep"></div>
+                        <span>锦湖日丽 / KUMHO SUNNY</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== 第2页：项目背景 ===== -->
+        <div class="section page-background" data-index="1">
+            <img src="bg.png" class="bg-texture" alt="">
+            <div class="page-content">
+                <div class="letter-card" style="margin-top:8px;">
+                    <div class="salutation">尊敬的行业伙伴：</div>
+                    <p>随着消费需求持续升级，两轮车行业正从单纯满足出行功能，逐步迈向兼具<span class="highlight">审美表达、个性认同与生活方式属性</span>的发展阶段。CMF（色彩、材料与工艺）设计也正从产品开发的辅助环节，成为塑造品牌价值、提升产品竞争力与建立用户认同的重要驱动力。</p>
+                    <p>基于对未来消费趋势、材料创新与产业发展的持续研究，<span class="highlight">COLORO</span>联合全球领先涂料制造商<span class="highlight">PPG</span>、全球美学塑料制造商<span class="highlight">锦湖日丽</span>，共同打造<span class="highlight">《2027两轮车CMF趋势白皮书》</span>，并将于<span class="highlight">6月26日</span>在<span class="highlight">上海</span>正式发布。</p>
+                </div>
+                <div class="bg-scooter-preview">
+                    <img src="image2.png" alt="四款两轮车展示">
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== 第3页：白皮书亮点 ===== -->
+        <div class="section page-overview" data-index="2">
+            <img src="bg.png" class="bg-texture" alt="">
+            <div class="page-content">
+                <div class="page-header">
+                    <h2>白皮书亮点</h2>
+                    <div class="en">Whitepaper Highlights</div>
+                    <div class="line"></div>
+                </div>
+                <p class="overview-intro">本次趋势研究聚焦两轮车行业未来发展方向，从色彩趋势、材料创新、工艺应用及消费者需求变化等多个维度展开系统解析，为行业提供兼具前瞻性与落地性的CMF创新参考。届时，您将率先了解：</p>
+
+                <div class="bullet-card">
+                    <div class="bullet-label">五大趋势信号深度解读 / 5 Trend Signals</div>
+                    <ul class="bullet-list">
+                        <li>消费审美变化 / Consumer Aesthetic Shift</li>
+                        <li>材料创新 / Material Innovation</li>
+                        <li>触觉体验 / Tactile Experience</li>
+                        <li>模块化设计 / Modular Design</li>
+                        <li>可持续工艺应用 / Sustainable Craft</li>
+                    </ul>
+                </div>
+
+                <div class="bullet-card">
+                    <div class="bullet-label">四大趋势主题 / 4 Trend Themes</div>
+                    <p>围绕旷野力量、静奢漫行、瞬驰锋芒、潮玩共振四大出行场景，呈现未来产品设计与色彩应用方向。</p>
+                </div>
+
+                <div class="bullet-card">
+                    <div class="bullet-label">24个关键趋势色 / 24 Key Trend Colors</div>
+                    <p>每个主题均包含精选6大趋势色，每个颜色均配备了材质、纹理与情绪灵感来源，帮助设计师精准把握未来色彩应用方向。</p>
+                </div>
+
+                <div class="invite-text">
+                    <span class="invite-highlight">诚挚邀请您莅临本次CMF趋势发布会</span>
+                    与来自COLORO、PPG及锦湖日丽的色彩与材料专家共同交流，深入探讨未来两轮车行业的发展趋势与创新方向，探索色彩、材料与工艺如何协同赋能产品升级，为品牌创造更具辨识度与市场竞争力的价值表达。
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== 第4页：活动详情 ===== -->
+        <div class="section page-details" data-index="3">
+            <img src="bg.png" class="bg-texture" alt="">
+            <div class="page-content">
+                <div class="details-visual">
+                    <img src="image3_new.png" alt="品牌展示">
+                </div>
+                <div class="details-body">
+                    <div class="page-header">
+                        <h2>活动安排</h2>
+                        <div class="line"></div>
+                    </div>
+                    <div class="schedule-card">
+                        <div class="schedule-item">
+                            <div class="schedule-time">13:00-13:30</div>
+                            <div class="schedule-content">
+                                <h4>嘉宾签到</h4>
+                                <p>入场签到，领取资料</p>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">13:30-15:30</div>
+                            <div class="schedule-content">
+                                <h4>趋势发布</h4>
+                                <p>CMF趋势白皮书正式发布</p>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">15:30-16:00</div>
+                            <div class="schedule-content">
+                                <h4>洽谈交流</h4>
+                                <p>与行业专家深入探讨</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="location-box">
+                        <h4>活动地点</h4>
+                        <p>上海元彩科技有限公司<br>上海市松江区鼎源路300号4幢1楼</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== 第5页：扫码报名 ===== -->
+        <div class="section page-register" data-index="4">
+            <img src="bg.png" class="bg-texture" alt="">
+            <div class="page-content">
+                <div class="page-header">
+                    <h2>扫码报名</h2>
+                    <div class="en">Registration</div>
+                    <div class="line"></div>
+                </div>
+                <div class="qr-card">
+                    <div class="scan-icon">📱</div>
+                    <div class="scan-title">微信扫码 · 立即预约</div>
+                    <div class="qr-code-wrapper">
+                        <img src="image4.jpeg" alt="报名二维码">
+                    </div>
+                    <div class="scan-tip">
+                        使用<strong>微信</strong>扫描上方二维码<br>
+                        填写信息完成报名预约
+                    </div>
+                </div>
+                <p class="seat-notice">* 席位有限，请扫码报名保障座位预留</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentIndex = 0;
+        const sections = document.querySelectorAll('.section');
+        const dots = document.querySelectorAll('.nav-dot');
+        const totalSections = sections.length;
+        let isScrolling = false;
+        let touchStartY = 0;
+        
+        function goToSection(index) {
+            if (index < 0 || index >= totalSections || isScrolling) return;
+            isScrolling = true;
+            
+            sections.forEach((section, i) => {
+                section.classList.remove('active', 'prev');
+                if (i < index) section.classList.add('prev');
+            });
+            
+            sections[index].classList.add('active');
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            
+            setTimeout(() => { sections[index].classList.add('animate-in'); }, 100);
+            
+            const scrollHint = document.getElementById('scrollHint');
+            scrollHint.style.opacity = index === totalSections - 1 ? '0' : '1';
+            
+            currentIndex = index;
+            setTimeout(() => { isScrolling = false; }, 800);
+        }
+        
+        document.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; }, { passive: true });
+        
+        document.addEventListener('touchend', (e) => {
+            const diff = touchStartY - e.changedTouches[0].clientY;
+            if (Math.abs(diff) > 50) {
+                goToSection(diff > 0 ? currentIndex + 1 : currentIndex - 1);
+            }
+        }, { passive: true });
+        
+        let wheelTimeout;
+        document.addEventListener('wheel', (e) => {
+            if (wheelTimeout) return;
+            wheelTimeout = setTimeout(() => { wheelTimeout = null; }, 800);
+            goToSection(e.deltaY > 0 ? currentIndex + 1 : currentIndex - 1);
+        }, { passive: true });
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => { goToSection(index); });
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') goToSection(currentIndex + 1);
+            else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') goToSection(currentIndex - 1);
+        });
+        
+        setTimeout(() => { sections[0].classList.add('animate-in'); }, 300);
+
+        // ===== 尘土粒子系统 =====
+        (function() {
+            const canvas = document.getElementById('dustCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const stage = document.getElementById('convoyStage');
+            if (!stage) return;
+
+            const scooterColors = ['#C9A96E', '#4A9B9B', '#D4AF37', '#6B5BCD'];
+            const scooterEls = stage.querySelectorAll('.scooter-unit');
+            let particles = [];
+
+            function resize() {
+                canvas.width = stage.offsetWidth;
+                canvas.height = stage.offsetHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            class Dust {
+                constructor(x, y, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.vx = -(Math.random() * 2.5 + 1.0);
+                    this.vy = -(Math.random() * 1.8 + 0.3);
+                    this.life = 1.0;
+                    this.decay = Math.random() * 0.025 + 0.015;
+                    this.size = Math.random() * 3.5 + 1.5;
+                    this.color = color;
+                    this.gravity = 0.02;
+                }
+                update() {
+                    this.x += this.vx;
+                    this.vy += this.gravity;
+                    this.y += this.vy;
+                    this.life -= this.decay;
+                    this.size *= 0.995;
+                }
+                draw(ctx) {
+                    if (this.life <= 0) return;
+                    const r = parseInt(this.color.slice(1,3),16);
+                    const g = parseInt(this.color.slice(3,5),16);
+                    const b = parseInt(this.color.slice(5,7),16);
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${r},${g},${b},${this.life * 0.35})`;
+                    ctx.fill();
+                }
+            }
+
+            function spawnDust() {
+                scooterEls.forEach((el, i) => {
+                    const rect = el.getBoundingClientRect();
+                    const stageRect = stage.getBoundingClientRect();
+                    const elLeft = rect.left - stageRect.left;
+                    const elBottom = rect.bottom - stageRect.top;
+                    const isVisible = rect.right > stageRect.left && rect.left < stageRect.right;
+                    if (!isVisible) return;
+                    // 尘土在后轮位置生成
+                    const dustX = elLeft + 16;
+                    const dustY = elBottom - 6;
+                    for (let j = 0; j < 3; j++) {
+                        particles.push(new Dust(
+                            dustX + Math.random() * 6,
+                            dustY + Math.random() * 4,
+                            scooterColors[i]
+                        ));
+                    }
+                    // 额外大颗粒烟尘
+                    if (Math.random() > 0.6) {
+                        const bigDust = new Dust(dustX, dustY, '#A09080');
+                        bigDust.size = Math.random() * 5 + 3;
+                        bigDust.decay = 0.01;
+                        bigDust.vx = -(Math.random() * 1.5 + 0.5);
+                        bigDust.vy = -(Math.random() * 0.8 + 0.2);
+                        particles.push(bigDust);
+                    }
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                spawnDust();
+                particles.forEach(p => { p.update(); p.draw(ctx); });
+                particles = particles.filter(p => p.life > 0);
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+    </script>
+</body>
+</html>
